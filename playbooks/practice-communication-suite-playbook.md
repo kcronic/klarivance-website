@@ -17,6 +17,48 @@ Sold separately, these are two products. Sold together, they are a **complete pa
 
 ---
 
+## Infrastructure Model — Who Owns What
+
+**Clairvance owns and manages all infrastructure.** This is non-negotiable for managed service delivery.
+
+| Component | Owner | How It Works |
+|---|---|---|
+| Twilio master account | Clairvance | One account, one subaccount per client — isolated numbers, usage, logs |
+| Twilio phone number | Clairvance (subaccount) | Number lives in client's subaccount; portable to client if they leave |
+| Railway account | Clairvance | One project per client; isolated env vars and deployments |
+| Google Sheets log | Client | Client's own Google Sheet — they own their data |
+| Gmail OAuth access | Client grants, Clairvance manages | Client authorizes; credentials stored in Railway env vars |
+
+**Infrastructure cost per client (included in retainer):**
+- Twilio number: ~$1.10/month
+- Twilio SMS usage: ~$0.0079/message (~$5–20/month typical)
+- Railway deployment: ~$5–15/month
+- Claude API: ~$5–20/month
+- **Total: ~$20–65/month** against a $1,500/month minimum retainer
+
+Never itemize these costs to the client. They're not buying infrastructure. They're buying a managed system.
+
+---
+
+## Email Provider Qualification — Know Before You Pitch
+
+The Inbox Triage Bot currently supports **Gmail and Google Workspace only.**
+
+Add this question to every Discovery call: *"What email system does your practice use for day-to-day operations?"*
+
+| Their Answer | Inbox Triage Available? | Your Move |
+|---|---|---|
+| Gmail / Google Workspace | Yes | Full bundle available |
+| Microsoft 365 / Outlook | Not yet | Lead with Missed Call Recovery only; position inbox triage as "coming Q[next quarter]" |
+| GoDaddy / generic hosting | Not yet | Same as above |
+| Not sure | Clarify | Ask: "When you open your email, what app do you use — Gmail or Outlook?" |
+
+**This is not a deal-killer.** Missed Call Recovery stands alone as a complete product. If they're on Outlook, you close the missed call system, deliver it, build trust, and add inbox triage when the Microsoft 365 version is ready. Do not position this as a limitation — position it as a roadmap.
+
+> *"The missed call system works with any phone setup — that's what we're deploying for you today. The email triage system is built specifically for Google Workspace, which I see you're [using / not using]. We'll [include it now / add it when your Microsoft integration is ready in Q[X]]."*
+
+---
+
 ## The Prospect Profile
 
 **Who buys this:** Independent medical practices (family medicine, internal medicine, pediatrics, OB/GYN, urgent care) with:
