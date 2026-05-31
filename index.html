@@ -13,14 +13,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink:       #0f1a14;
-      --ink-soft:  #3d5045;
-      --cream:     #f6f3ee;
-      --cream-mid: #ede8df;
-      --sage:      #4a7c59;
-      --sage-light:#6a9e7a;
-      --gold:      #c8a96e;
-      --gold-pale: #f0e6cf;
+      --ink:       #071a3f;
+      --ink-soft:  #334b78;
+      --cream:     #f6f0e6;
+      --cream-mid: #e9dfd4;
+      --sage:      #7a1f32;
+      --sage-light:#9f344f;
+      --gold:      #c59e4a;
+      --gold-pale: #f2e3b5;
       --white:     #ffffff;
       --radius:    6px;
       --max:       1100px;
@@ -101,7 +101,7 @@
       gap: 0.5rem;
       background: var(--gold-pale);
       border: 1px solid var(--gold);
-      color: #8a6d3b;
+      color: var(--gold);
       font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.08em;
@@ -329,7 +329,7 @@
       font-size: 0.8rem;
       font-weight: 600;
       color: var(--sage);
-      background: rgba(74,124,89,0.08);
+      background: rgba(122,31,50,0.08);
       padding: 0.4rem 0.75rem;
       border-radius: 100px;
       display: inline-block;
@@ -461,7 +461,7 @@
     .av-label { color: var(--ink-soft); }
     .av-val { font-weight: 600; color: var(--ink); }
     .av-badge {
-      background: rgba(74,124,89,0.1);
+      background: rgba(122,31,50,0.12);
       color: var(--sage);
       font-size: 0.72rem;
       font-weight: 700;
@@ -503,7 +503,7 @@
       transition: background 0.2s, transform 0.15s;
       display: inline-block;
     }
-    .btn-gold:hover { background: #d4b87a; transform: translateY(-1px); }
+    .btn-gold:hover { background: #d9b772; transform: translateY(-1px); }
     .btn-ghost {
       background: transparent;
       color: rgba(255,255,255,0.75);
