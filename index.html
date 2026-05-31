@@ -540,9 +540,10 @@
       color: var(--white);
       text-decoration: none;
     }
-    .footer-logo .footer-logo-klari { color: var(--gold); }
-    .footer-logo .footer-logo-vance { color: var(--burgundy); }
-    .footer-logo .footer-logo-inc { color: var(--gold); }
+    .footer-logo .footer-logo-klari { color: #c59e4a; }
+    .footer-logo .footer-logo-vance { color: #7a1f32; }
+    /* Stronger rule to ensure Inc. appears gold (overrides other span rules) */
+    footer .footer-logo .footer-logo-inc { color: #c59e4a !important; }
     .footer-copy {
       font-size: 0.8rem;
       color: rgba(255,255,255,0.35);
