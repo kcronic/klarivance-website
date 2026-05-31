@@ -19,7 +19,6 @@
       --cream-mid: #e9dfd4;
       --sage:      #7a1f32;
       --sage-light:#9f344f;
-      --burgundy:  #7a1f32;
       --gold:      #c59e4a;
       --gold-pale: #f2e3b5;
       --white:     #ffffff;
@@ -55,22 +54,13 @@
       height: 68px;
     }
     .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
       font-family: 'DM Serif Display', serif;
       font-size: 1.5rem;
       color: var(--ink);
       text-decoration: none;
       letter-spacing: -0.02em;
     }
-    .logo-img {
-      display: block;
-      height: 48px;
-      width: auto;
-    }
-    .logo span { color: var(--ink); }
-    .logo span span { color: var(--sage); }
+    .logo span { color: var(--sage); }
     nav ul {
       list-style: none;
       display: flex;
@@ -546,11 +536,10 @@
     .footer-logo {
       font-family: 'DM Serif Display', serif;
       font-size: 1.25rem;
-      color: var(--gold);
+      color: var(--white);
       text-decoration: none;
     }
-    .footer-logo .footer-logo-gold { color: var(--gold); }
-    .footer-logo .footer-logo-burgundy { color: var(--burgundy); }
+    .footer-logo span { color: var(--sage-light); }
     .footer-copy {
       font-size: 0.8rem;
       color: rgba(255,255,255,0.35);
@@ -595,13 +584,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-<<<<<<< HEAD
     <a href="#" class="logo">Klari<span>vance</span></a>
-=======
-    <a href="#" class="logo">
-      <span>Klari<span>vance</span></span>
-    </a>
->>>>>>> 0a186d6 (Add updated footer and landing page content)
     <ul>
       <li><a href="#services">Services</a></li>
       <li><a href="#how">How It Works</a></li>
@@ -800,7 +783,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <a href="#" class="footer-logo"><span class="footer-logo-gold">Klari</span><span class="footer-logo-burgundy">vanceInc</span></a>
+    <a href="#" class="footer-logo">Klari<span>vance</span> Inc.</a>
     <div class="footer-copy">© 2026 Klarivance Inc. · Albuquerque, NM</div>
     <div class="footer-contact">Questions? <a href="mailto:Kristie@klarivance.com">Kristie@klarivance.com</a></div>
   </div>
