@@ -1,797 +1,619 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Klarivance — AI Automation for Medical & Dental Practices</title>
-  <meta name="description" content="Done-for-you AI workflow automation built specifically for independent medical and dental practices. Recover revenue, reduce staff burden, and run a smoother practice." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light only">
+  <title>Klarivance — AI Consulting & Workflow Automation</title>
+  <meta name="description" content="Klarivance helps small and mid-size businesses integrate AI into their daily operations — from strategy to hands-on automation builds that actually run.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --ink:       #071a3f;
-      --ink-soft:  #334b78;
-      --cream:     #f6f0e6;
-      --cream-mid: #e9dfd4;
-      --sage:      #7a1f32;
-      --sage-light:#9f344f;
-      --burgundy:  #7a1f32;
-      --gold:      #c59e4a;
-      --gold-pale: #f2e3b5;
-      --white:     #ffffff;
-      --radius:    6px;
-      --max:       1100px;
+      --navy: #0F1B2D;
+      --ink: #1A2332;
+      --slate: #4A5568;
+      --mist: #EBE6E0;
+      --cloud: #F7F4F0;
+      --accent: #7A2039;
+      --accent-light: #922848;
+      --white: #FFFFFF;
+      --gold: #C5993A;
+      --gold-light: #D4AA4F;
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; color-scheme: light only; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
+      font-family: var(--font-body);
       color: var(--ink);
-      font-size: 16px;
-      line-height: 1.65;
+      line-height: 1.6;
+      background: var(--white);
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(246,243,238,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--cream-mid);
-      padding: 0 2rem;
-    }
-    .nav-inner {
-      max-width: var(--max);
-      margin: 0 auto;
+    /* Sections default to white so nothing auto-darkens */
+    section { background: var(--white); }
+
+    /* ─── NAV ─── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 68px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
     }
-    .logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.5rem;
-      color: var(--ink);
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: var(--navy);
       text-decoration: none;
       letter-spacing: -0.02em;
     }
-    .logo span { color: var(--sage); }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-    nav ul a {
-      text-decoration: none;
-      color: var(--ink-soft);
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-family: var(--font-display);
       font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
+      font-weight: 600;
+      color: var(--slate);
+      text-decoration: none;
       transition: color 0.2s;
     }
-    nav ul a:hover { color: var(--sage); }
+    .nav-links a:hover { color: var(--navy); }
     .nav-cta {
-      background: var(--sage) !important;
-      color: var(--white) !important;
-      padding: 0.5rem 1.25rem;
-      border-radius: var(--radius);
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+      padding: 0.6rem 1.25rem !important;
+      border-radius: 6px;
       transition: background 0.2s !important;
     }
-    .nav-cta:hover { background: var(--ink) !important; }
+    .nav-cta:hover { background: var(--gold-light) !important; }
 
-    /* ── HERO ── */
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    .mobile-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--navy);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    /* ─── HERO ─── */
     .hero {
-      max-width: var(--max);
+      padding: 10rem 2rem 6rem;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 7rem 2rem 5rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
+      text-align: center;
+    }
+    .hero-wrap {
+      background: var(--accent);
     }
     .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--gold-pale);
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
       text-transform: uppercase;
-      padding: 0.35rem 0.85rem;
-      border-radius: 100px;
+      letter-spacing: 0.12em;
+      color: var(--gold);
       margin-bottom: 1.5rem;
     }
     .hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.4rem, 4vw, 3.4rem);
-      line-height: 1.15;
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.12;
+      color: var(--white);
       letter-spacing: -0.03em;
-      color: var(--ink);
       margin-bottom: 1.5rem;
     }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--sage);
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 620px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
     }
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--ink-soft);
-      max-width: 480px;
-      margin-bottom: 2.5rem;
-      font-weight: 300;
-      line-height: 1.75;
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
     }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-primary {
-      background: var(--sage);
-      color: var(--white);
-      padding: 0.85rem 2rem;
-      border-radius: var(--radius);
-      text-decoration: none;
+      font-family: var(--font-display);
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 1rem;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
       transition: background 0.2s, transform 0.15s;
-      display: inline-block;
     }
-    .btn-primary:hover { background: var(--ink); transform: translateY(-1px); }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
     .btn-secondary {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
       background: transparent;
-      color: var(--ink);
-      padding: 0.85rem 2rem;
-      border-radius: var(--radius);
-      border: 1.5px solid var(--cream-mid);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
       text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: border-color 0.2s, background 0.2s;
-      display: inline-block;
+      border: 2px solid rgba(255,255,255,0.5);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-    .btn-secondary:hover { border-color: var(--sage); background: var(--white); }
+    .btn-secondary:hover { background: var(--white); color: var(--accent); border-color: var(--white); }
 
-    /* hero card */
-    .hero-card {
-      background: var(--white);
-      border-radius: 16px;
-      border: 1px solid var(--cream-mid);
-      padding: 2rem;
-      box-shadow: 0 4px 40px rgba(15,26,20,0.08);
-    }
-    .hero-card-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 1.25rem;
-    }
-    .stat-row {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .stat-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 1rem;
-      background: var(--cream);
-      border-radius: 10px;
-      border-left: 3px solid var(--sage);
-    }
-    .stat-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.6rem;
-      color: var(--sage);
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .stat-desc {
-      font-size: 0.82rem;
-      color: var(--ink-soft);
-      line-height: 1.4;
-      padding-top: 0.1rem;
-    }
-    .stat-desc strong { color: var(--ink); display: block; font-size: 0.9rem; }
-
-    /* ── PAIN STRIP ── */
-    .pain-strip {
-      background: var(--ink);
-      padding: 3rem 2rem;
-      margin: 4rem 0 0;
-    }
-    .pain-strip-inner {
-      max-width: var(--max);
+    /* ─── DIVIDER ─── */
+    .divider {
+      max-width: 900px;
       margin: 0 auto;
-    }
-    .pain-strip h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.5rem;
-      color: var(--white);
-      margin-bottom: 2rem;
-      font-style: italic;
-      opacity: 0.9;
-    }
-    .pain-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-    }
-    .pain-item {
-      padding: 1.25rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      background: rgba(255,255,255,0.04);
-    }
-    .pain-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-    .pain-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 0.35rem;
-    }
-    .pain-text {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.5;
-    }
-    .pain-cost {
-      margin-top: 0.6rem;
-      font-size: 0.78rem;
-      color: var(--gold);
-      font-weight: 600;
+      border: none;
+      border-top: 1px solid var(--mist);
     }
 
-    /* ── SERVICES ── */
-    .section {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 5rem 2rem;
-    }
+    /* ─── SECTION SHARED ─── */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
     .section-label {
+      font-family: var(--font-display);
       font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+      font-weight: 700;
       text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 0.75rem;
-    }
-    .section-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      letter-spacing: -0.02em;
-      color: var(--ink);
+      letter-spacing: 0.12em;
+      color: var(--gold);
       margin-bottom: 1rem;
+    }
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.65rem, 3.5vw, 2.25rem);
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
       line-height: 1.2;
+      margin-bottom: 1rem;
     }
     .section-sub {
-      font-size: 1rem;
-      color: var(--ink-soft);
-      max-width: 560px;
+      font-size: 1.05rem;
+      color: var(--slate);
+      max-width: 600px;
+      line-height: 1.7;
       margin-bottom: 3rem;
-      font-weight: 300;
     }
 
+    /* ─── SERVICES ─── */
+    .services-bg { background: var(--cloud); }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
       gap: 1.5rem;
     }
     .service-card {
       background: var(--white);
-      border: 1px solid var(--cream-mid);
-      border-radius: 14px;
+      border-radius: 12px;
       padding: 2rem;
+      border: 1px solid rgba(0,0,0,0.06);
       transition: box-shadow 0.25s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
     }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 3px;
-      background: linear-gradient(90deg, var(--sage), var(--gold));
-      opacity: 0;
-      transition: opacity 0.25s;
+    .service-card:hover {
+      box-shadow: 0 8px 30px rgba(11,29,58,0.08);
+      transform: translateY(-2px);
     }
-    .service-card:hover { box-shadow: 0 8px 40px rgba(15,26,20,0.1); transform: translateY(-2px); }
-    .service-card:hover::before { opacity: 1; }
     .service-icon {
-      width: 44px; height: 44px;
-      background: var(--gold-pale);
+      width: 44px;
+      height: 44px;
       border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 1.25rem;
+      font-size: 1.25rem;
     }
-    .service-name {
+    .service-icon.burgundy { background: #F2E4E8; color: var(--accent); }
+    .service-icon.gold { background: #F5EDDA; color: var(--gold); }
+    .service-icon.navy { background: #E0E4EB; color: var(--navy); }
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
       font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--ink);
-      margin-bottom: 0.5rem;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
     }
-    .service-desc {
-      font-size: 0.875rem;
-      color: var(--ink-soft);
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
+    .service-card p {
+      font-size: 0.925rem;
+      color: var(--slate);
+      line-height: 1.65;
     }
-    .service-roi {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--sage);
-      background: rgba(122,31,50,0.08);
-      padding: 0.4rem 0.75rem;
-      border-radius: 100px;
-      display: inline-block;
-    }
-    .service-price {
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--cream-mid);
-      font-size: 0.8rem;
-      color: var(--ink-soft);
-    }
-    .service-price strong { color: var(--ink); }
 
-    /* ── HOW IT WORKS ── */
-    .how-bg {
-      background: var(--cream-mid);
-      padding: 5rem 2rem;
-    }
-    .how-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-    }
+    /* ─── HOW IT WORKS ─── */
     .steps {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 3rem;
-      position: relative;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.5rem;
+      counter-reset: step;
     }
-    .steps::before {
-      content: '';
-      position: absolute;
-      top: 28px; left: calc(16.66% + 1rem);
-      width: calc(66.66% - 2rem);
-      height: 1px;
-      background: linear-gradient(90deg, var(--sage), var(--gold), var(--sage));
-      opacity: 0.35;
-    }
-    .step { text-align: center; position: relative; }
-    .step-num {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: var(--white);
-      border: 2px solid var(--sage);
-      color: var(--sage);
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.4rem;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1.25rem;
-      position: relative; z-index: 1;
+    .step { position: relative; padding-left: 0; }
+    .step-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #E8D9B8;
+      line-height: 1;
+      margin-bottom: 0.75rem;
     }
     .step h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
       font-weight: 700;
-      font-size: 1rem;
+      color: var(--navy);
       margin-bottom: 0.5rem;
-      color: var(--ink);
     }
     .step p {
-      font-size: 0.875rem;
-      color: var(--ink-soft);
-      line-height: 1.6;
+      font-size: 0.925rem;
+      color: var(--slate);
+      line-height: 1.65;
     }
 
-    /* ── ABOUT ── */
-    .about-grid {
+    /* ─── WHO IT'S FOR ─── */
+    .who-bg { background: var(--cloud); }
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .who-item {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.5rem;
+      border: 1px solid rgba(0,0,0,0.05);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--navy);
+      text-align: center;
+    }
+    .who-item span {
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ─── ABOUT / CREDIBILITY ─── */
+    .about-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
+      gap: 4rem;
+      align-items: start;
     }
-    .about-accent {
-      display: inline-block;
-      width: 40px; height: 3px;
-      background: var(--sage);
-      margin-bottom: 1.5rem;
-    }
-    .about-body {
+    .about-text p {
       font-size: 1rem;
-      color: var(--ink-soft);
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-      font-weight: 300;
+      color: var(--slate);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
     }
-    .about-body strong { color: var(--ink); font-weight: 600; }
-    .cred-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
     }
-    .cred-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      font-size: 0.9rem;
-      color: var(--ink-soft);
-    }
-    .cred-dot {
-      width: 20px; height: 20px; min-width: 20px;
-      background: var(--sage);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: white;
-      font-size: 0.65rem;
-      margin-top: 2px;
-    }
-    .about-visual {
-      background: var(--white);
-      border-radius: 16px;
-      border: 1px solid var(--cream-mid);
-      padding: 2.5rem;
-      box-shadow: 0 4px 40px rgba(15,26,20,0.07);
-    }
-    .av-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      color: var(--ink);
-    }
-    .av-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.85rem 0;
-      border-bottom: 1px solid var(--cream-mid);
-      font-size: 0.875rem;
-    }
-    .av-item:last-child { border-bottom: none; }
-    .av-label { color: var(--ink-soft); }
-    .av-val { font-weight: 600; color: var(--ink); }
-    .av-badge {
-      background: rgba(122,31,50,0.12);
-      color: var(--sage);
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 0.2rem 0.6rem;
-      border-radius: 100px;
-    }
-
-    /* ── CTA ── */
-    .cta-section {
-      background: var(--ink);
-      padding: 6rem 2rem;
+    .stat-card {
+      background: var(--cloud);
+      border-radius: 10px;
+      padding: 1.5rem;
       text-align: center;
     }
-    .cta-inner { max-width: 640px; margin: 0 auto; }
-    .cta-section h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--white);
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
+    .stat-card .number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
     }
-    .cta-section h2 em { color: var(--gold); font-style: italic; }
-    .cta-section p {
-      color: rgba(255,255,255,0.6);
-      font-size: 1rem;
-      margin-bottom: 2.5rem;
-      font-weight: 300;
+    .stat-card .label {
+      font-size: 0.825rem;
+      color: var(--slate);
+      margin-top: 0.35rem;
+      line-height: 1.4;
     }
-    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn-gold {
-      background: var(--gold);
-      color: var(--ink);
-      padding: 0.9rem 2.25rem;
-      border-radius: var(--radius);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      transition: background 0.2s, transform 0.15s;
-      display: inline-block;
-    }
-    .btn-gold:hover { background: #d9b772; transform: translateY(-1px); }
-    .btn-ghost {
-      background: transparent;
-      color: rgba(255,255,255,0.75);
-      padding: 0.9rem 2.25rem;
-      border-radius: var(--radius);
-      border: 1.5px solid rgba(255,255,255,0.2);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: border-color 0.2s, color 0.2s;
-      display: inline-block;
-    }
-    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* ── FOOTER ── */
+    /* ─── MISSION ─── */
+    .mission {
+      background: var(--accent);
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .mission blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 3vw, 1.85rem);
+      font-weight: 700;
+      color: var(--white);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+    .mission .attr {
+      color: var(--gold);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 1.25rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ─── CTA FOOTER ─── */
+    .cta-section {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: var(--cloud);
+    }
+    .cta-section .section-heading { margin-bottom: 0.75rem; }
+    .cta-section p {
+      font-size: 1.05rem;
+      color: var(--slate);
+      max-width: 520px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    /* ─── FOOTER ─── */
     footer {
-      background: #080f0a;
       padding: 2.5rem 2rem;
       text-align: center;
+      border-top: 1px solid var(--mist);
     }
-    .footer-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
+    footer p {
+      font-size: 0.8rem;
+      color: var(--slate);
     }
-    .footer-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem;
-      color: var(--white);
+    footer a {
+      color: var(--gold);
       text-decoration: none;
     }
-    .footer-logo .footer-logo-klari { color: #c59e4a; }
-    .footer-logo .footer-logo-vance { color: #7a1f32; }
-    /* Stronger rule to ensure Inc. appears gold (overrides other span rules) */
-    footer .footer-logo .footer-logo-inc { color: #c59e4a !important; }
-    .footer-copy {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.35);
-    }
-    .footer-contact {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.5);
-    }
-    .footer-contact a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero-left > * { animation: fadeUp 0.6s ease both; }
-    .hero-left > *:nth-child(1) { animation-delay: 0.05s; }
-    .hero-left > *:nth-child(2) { animation-delay: 0.15s; }
-    .hero-left > *:nth-child(3) { animation-delay: 0.25s; }
-    .hero-left > *:nth-child(4) { animation-delay: 0.35s; }
-    .hero-card { animation: fadeUp 0.7s 0.3s ease both; }
-
-    /* ── RESPONSIVE ── */
+    /* ─── MOBILE ─── */
     @media (max-width: 768px) {
-      .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.25rem 3rem; }
-      .hero-card { display: none; }
-      .pain-grid { grid-template-columns: 1fr 1fr; }
-      .services-grid { grid-template-columns: 1fr; }
-      .steps { grid-template-columns: 1fr; }
-      .steps::before { display: none; }
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      nav ul { display: none; }
-      .section { padding: 3.5rem 1.25rem; }
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid var(--mist);
+        gap: 1.25rem;
+      }
+      .nav-links.open .nav-cta {
+        text-align: center;
+        display: block;
+      }
+
+      .hero { padding: 8rem 1.5rem 4rem; }
+      section { padding: 3.5rem 1.5rem; }
+
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn-primary, .btn-secondary { width: 100%; text-align: center; max-width: 320px; }
     }
-    @media (max-width: 480px) {
-      .pain-grid { grid-template-columns: 1fr; }
+
+    /* ─── REDUCED MOTION ─── */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .service-card, .btn-primary { transition: none; }
+    }
+
+    /* ─── FOCUS ─── */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="logo">Klari<span>vance</span></a>
-    <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#how">How It Works</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact" class="nav-cta">Get Started</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section>
-  <div class="hero">
-    <div class="hero-left">
-      <div class="hero-eyebrow">✦ AI Automation for Healthcare Practices</div>
-      <h1>Your staff should care for <em>patients,</em> not paperwork.</h1>
-      <p class="hero-sub">Klarivance delivers done-for-you AI automations that eliminate front-desk busywork — so your practice runs smoother and recovers more revenue, without adding staff.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Schedule a Free Discovery Call</a>
-        <a href="#services" class="btn-secondary">See What We Automate</a>
-      </div>
+  <!-- NAV -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-logo">Klari<span>vance</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#how">How It Works</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta">Book a Call</a>
     </div>
-    <div class="hero-card">
-      <div class="hero-card-label">Revenue recovered per month</div>
-      <div class="stat-row">
-        <div class="stat-item">
-          <div class="stat-num">$2,400+</div>
-          <div class="stat-desc"><strong>Missed Call Recovery</strong>Recovering 2 lost new patients/mo at $1,200 each</div>
+    <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero-wrap">
+  <header class="hero">
+    <p class="hero-eyebrow">AI Consulting &amp; Workflow Automation</p>
+    <h1>Your business runs on processes.<br>We make them smarter.</h1>
+    <p>Klarivance helps small and mid-size businesses figure out where AI fits into their operations — then builds and manages the automations that make it real. No buzzwords, no science projects. Just workflows that work harder than the ones you have now.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a Discovery Call</a>
+      <a href="#services" class="btn-secondary">See What We Do</a>
+    </div>
+  </header>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services" class="services-bg">
+    <div class="section-inner">
+      <p class="section-label">Services</p>
+      <h2 class="section-heading">From strategy to running systems</h2>
+      <p class="section-sub">Most businesses don't need more AI tools. They need someone to look at how work actually moves through their organization and identify where AI creates real leverage.</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon burgundy">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <h3>AI Workflow Assessment</h3>
+          <p>We audit your current processes — email, scheduling, intake, follow-ups, internal routing — and identify the spots where AI and automation will have the biggest impact on time and revenue.</p>
         </div>
-        <div class="stat-item">
-          <div class="stat-num">$6,000+</div>
-          <div class="stat-desc"><strong>Patient Recall Automation</strong>Re-engaging 20 overdue patients at $300/visit</div>
+        <div class="service-card">
+          <div class="service-icon gold">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3>AI Strategy &amp; Roadmap</h3>
+          <p>Get a clear, prioritized plan for bringing AI into your business — which tools, which workflows, what order, what it costs. Built around your operations, not a generic playbook.</p>
         </div>
-        <div class="stat-item">
-          <div class="stat-num">3 hrs/wk</div>
-          <div class="stat-desc"><strong>Staff Time Saved</strong>Eliminating manual intake data entry every week</div>
+        <div class="service-card">
+          <div class="service-icon navy">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+          </div>
+          <h3>Done-for-You Automation Builds</h3>
+          <p>We design, build, and deploy AI-powered automations — inbox triage, missed call recovery, lead follow-up, internal routing, and more — then manage them so they keep running.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon burgundy">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9m-9 9a9 9 0 0 1 9-9"/></svg>
+          </div>
+          <h3>Ongoing Management &amp; Optimization</h3>
+          <p>Automations aren't set-and-forget. We monitor, maintain, and improve your systems as your business evolves — so you stay focused on the work that matters.</p>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="section-inner">
+      <p class="section-label">How It Works</p>
+      <h2 class="section-heading">Three conversations to a running system</h2>
+      <p class="section-sub">No six-month implementation timelines. We move fast because we focus on the workflows that will make an immediate difference.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Discovery</h3>
+          <p>We talk through how your business operates day to day — where time disappears, what falls through the cracks, and which manual tasks make you cringe. This is a real conversation, not a form.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Strategy &amp; Scope</h3>
+          <p>You get a clear proposal: which workflows to automate, what AI tools we'll use, what it costs, and what results to expect. No jargon, no mystery.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>Build &amp; Launch</h3>
+          <p>We build and deploy your automations, test them with real data, and hand you a system that's working — not a slide deck about what could work someday.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="who-bg">
+    <div class="section-inner">
+      <p class="section-label">Who This Is For</p>
+      <h2 class="section-heading">Built for businesses that run on relationships</h2>
+      <p class="section-sub">If your team spends more time on admin than on the work your clients actually pay for, we should talk.</p>
+
+      <div class="who-grid">
+        <div class="who-item"><span>🏥</span>Medical &amp; Dental Practices</div>
+        <div class="who-item"><span>⚖️</span>Law Firms</div>
+        <div class="who-item"><span>🏠</span>Real Estate Brokerages</div>
+        <div class="who-item"><span>📋</span>Professional Services</div>
+        <div class="who-item"><span>🔧</span>Trades &amp; Field Services</div>
+        <div class="who-item"><span>🏢</span>Small Business Operations</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <div class="mission">
+    <blockquote>"Returning time and revenue to those who serve others."</blockquote>
+    <p class="attr">The Klarivance mission</p>
   </div>
-</section>
 
-<!-- PAIN STRIP -->
-<div class="pain-strip">
-  <div class="pain-strip-inner">
-    <h2>Sound familiar?</h2>
-    <div class="pain-grid">
-      <div class="pain-item">
-        <div class="pain-icon">📞</div>
-        <div class="pain-title">Missed calls go unanswered</div>
-        <div class="pain-text">New patient calls slip through when your front desk is busy with walk-ins.</div>
-        <div class="pain-cost">≈ $1,200+ per missed new patient</div>
-      </div>
-      <div class="pain-item">
-        <div class="pain-icon">📋</div>
-        <div class="pain-title">Paper forms re-typed manually</div>
-        <div class="pain-text">Staff spend hours re-entering intake data that patients already wrote down.</div>
-        <div class="pain-cost">≈ 3+ hours of staff time weekly</div>
-      </div>
-      <div class="pain-item">
-        <div class="pain-icon">📬</div>
-        <div class="pain-title">Inbox overwhelmed daily</div>
-        <div class="pain-text">Routine emails pile up, urgent ones get buried, and replies take too long.</div>
-        <div class="pain-cost">≈ Hours of attention diverted from patients</div>
-      </div>
-      <div class="pain-item">
-        <div class="pain-icon">🗓️</div>
-        <div class="pain-title">Overdue patients not recalled</div>
-        <div class="pain-text">Patients who haven't been in 6–12 months aren't being re-engaged.</div>
-        <div class="pain-cost">≈ $6,000+/mo in recoverable visits</div>
-      </div>
-    </div>
-  </div>
-</div>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">About Klarivance</p>
+      <h2 class="section-heading">Operations experience meets AI expertise</h2>
 
-<!-- SERVICES -->
-<section class="section" id="services">
-  <div class="section-label">What We Automate</div>
-  <h2 class="section-title">Four automations. Real, measurable results.</h2>
-  <p class="section-sub">Every product is HIPAA-aware, up and running in days, and maintained by us — no IT team required on your end.</p>
+      <div class="about-layout">
+        <div class="about-text">
+          <p>Klarivance was founded by Kristie, who spent more than 30 years in customer service operations and process improvement before moving into enterprise technology — building and managing automation systems across platforms like Microsoft Power Automate, Copilot Studio, and K2 (Nintex).</p>
+          <p>That combination — deep operational instinct plus hands-on technical ability — is what makes Klarivance different. We don't just know the AI tools. We understand the work those tools need to fit into.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="number">30+</div>
+            <div class="label">Years in operations &amp; process improvement</div>
+          </div>
+          <div class="stat-card">
+            <div class="number">10+</div>
+            <div class="label">Years in enterprise automation technology</div>
+          </div>
+          <div class="stat-card">
+            <div class="number">SMB</div>
+            <div class="label">Purpose-built for small &amp; mid-size business</div>
+          </div>
+          <div class="stat-card">
+            <div class="number">US</div>
+            <div class="label">Serving businesses nationwide</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon">📧</div>
-      <div class="service-name">Inbox Triage Bot</div>
-      <div class="service-desc">AI reads, classifies, and prioritizes every incoming email — then drafts ready-to-send replies for your staff to review. Urgent items surface immediately; routine requests handle themselves.</div>
-      <div class="service-roi">✓ Saves 5–8 hrs of inbox management per week</div>
-     
+  <!-- CTA -->
+  <section id="contact" class="cta-section">
+    <div class="section-inner">
+      <p class="section-label">Get Started</p>
+      <h2 class="section-heading">Ready to see where AI fits in your business?</h2>
+      <p>Book a free 30-minute discovery call. We'll talk through your operations and identify the automations that would make the biggest difference — no pitch, no pressure.</p>
+      <a href="mailto:kristie@klarivance.com" class="btn-primary">Book a Discovery Call</a>
     </div>
-    <div class="service-card">
-      <div class="service-icon">📱</div>
-      <div class="service-name">Missed Call SMS Recovery</div>
-      <div class="service-desc">When your practice misses a call, a personalized SMS goes out within 60 seconds — automatically. Patients feel taken care of; you capture the appointment you almost lost.</div>
-      <div class="service-roi">✓ Recovering 2 new patients/mo pays for the entire service</div>
+  </section>
 
-    </div>
-    <div class="service-card">
-      <div class="service-icon">📄</div>
-      <div class="service-name">Digital Patient Intake</div>
-      <div class="service-desc">New patient forms are sent digitally before appointments. Data is captured and formatted automatically — no more clipboards, no more manual re-entry, no more transcription errors.</div>
-      <div class="service-roi">✓ Eliminates 3+ hours of staff data entry every week</div>
-      
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🔔</div>
-      <div class="service-name">Patient Recall & Follow-Up</div>
-      <div class="service-desc">Overdue patients are identified and automatically messaged with a personalized outreach sequence. No staff involvement. Just appointments that get booked — and revenue that comes back.</div>
-      <div class="service-roi">✓ 20 recalled patients/mo = $6,000 in recovered revenue</div>
-   
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<div class="how-bg" id="how">
-  <div class="how-inner">
-    <div class="section-label">The Process</div>
-    <h2 class="section-title">Simple from your side. Powerful on ours.</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Discovery Call</h3>
-        <p>We spend 45 minutes learning your practice's specific workflow, tools, and pain points. No generic solutions — everything is scoped to your situation.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>We Build It</h3>
-        <p>Klarivance designs, configures, and tests your automation system. Most implementations are live within 5–7 business days. You're not involved in the technical work.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>You Run Smoother</h3>
-        <p>We handle ongoing monitoring and support. If something needs adjusting, we fix it. You focus on patients — we keep the automation running.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<section class="section" id="about">
-  <div class="about-grid">
-    <div>
-      <div class="about-accent"></div>
-      <div class="section-label">About Klarivance</div>
-      <h2 class="section-title">Built by someone who understands your workflow.</h2>
-      <p class="about-body">Klarivance was founded by <strong>Kristie</strong>, a business process improvement specialist with <strong>30+ years of customer service operations experience</strong> and a decade in technical roles — including enterprise application analysis, software integration, and no-code automation.</p>
-      <p class="about-body">She's exprienced firsthand how independent practices get buried under operational tasks that technology should be handling. Klarivance exists to close that gap — affordably, reliably, and without requiring your staff to become tech experts.</p>
-      <ul class="cred-list">
-        <li><div class="cred-dot">✓</div>30+ years operations & process improvement experience</li>
-        <li><div class="cred-dot">✓</div>Expertise in workflow development, design, and integration</li>
-        <li><div class="cred-dot">✓</div>HIPAA-aware implementations built for regulated environments</li>
-        <li><div class="cred-dot">✓</div>Serving independent practices across New Mexico & the Southwest</li>
-      </ul>
-    </div>
-    <div class="about-visual">
-      <div class="av-title">What a Klarivance engagement looks like</div>
-      <div class="av-item">
-        <span class="av-label">Typical setup time</span>
-        <span class="av-val">5–7 business days</span>
-      </div>
-      <div class="av-item">
-        <span class="av-label">Contract type</span>
-        <span class="av-val">Yearly</span>
-      </div>
-      <div class="av-item">
-        <span class="av-label">Technical work required from you</span>
-        <span class="av-val">None</span>
-      </div>
-      <div class="av-item">
-        <span class="av-label">HIPAA compliance</span>
-        <span class="av-val"><span class="av-badge">Built In</span></span>
-      </div>
-      <div class="av-item">
-        <span class="av-label">Ongoing support</span>
-        <span class="av-val">Included</span>
-      </div>
-      <div class="av-item">
-        <span class="av-label">Bundle discount (2+ products)</span>
-        <span class="av-val">10–15% off</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" id="contact">
-  <div class="cta-inner">
-    <h2>Ready to stop losing revenue to <em>manual tasks?</em></h2>
-    <p>Schedule a free 45-minute discovery call. No pressure, no pitch — just an honest look at where automation can help your practice most.</p>
-    <div class="cta-actions">
-      <a href="mailto:Kristie@klarivance.com" class="btn-gold">Schedule a Discovery Call</a>
-      <a href="mailto:Kristie@klarivance.com" class="btn-ghost">Kristie@klarivance.com</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <a href="#" class="footer-logo"><span class="footer-logo-klari">Klari</span><span class="footer-logo-vance">vance</span></a>
-    <div class="footer-copy">© 2026 Klarivance Inc. · Albuquerque, NM</div>
-    <div class="footer-contact">Questions? <a href="mailto:Kristie@klarivance.com">Kristie@klarivance.com</a></div>
-  </div>
-</footer>
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Klarivance Inc. &middot; Nationwide AI Consulting &amp; Automation &middot; <a href="mailto:kristie@klarivance.com">kristie@klarivance.com</a></p>
+  </footer>
 
 </body>
 </html>
